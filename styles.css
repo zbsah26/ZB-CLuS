@@ -1,0 +1,1853 @@
+/* ============================
+   ZB CLuS - AniGravity Design System
+   Industry Grade Modern UI
+   ============================ */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    /* ====== DARK THEME (Default) ====== */
+    /* AniGravity Color Palette - Dark */
+    --primary: #0F172A;
+    --primary-light: #1E293B;
+    --primary-lighter: #334155;
+    
+    --accent-blue: #3B82F6;
+    --accent-purple: #8B5CF6;
+    --accent-cyan: #06B6D4;
+    --accent-pink: #EC4899;
+    
+    --gradient-primary: linear-gradient(135deg, #3B82F6 0%, #8B5CF6 100%);
+    --gradient-secondary: linear-gradient(135deg, #8B5CF6 0%, #EC4899 100%);
+    --gradient-tertiary: linear-gradient(135deg, #06B6D4 0%, #3B82F6 100%);
+    --gradient-text: linear-gradient(135deg, #3B82F6 0%, #EC4899 100%);
+    
+    --surface-dark: #0F172A;
+    --surface-card: #1A1F3A;
+    --surface-hover: #243556;
+    --surface-active: #334155;
+    
+    --text-primary: #F1F5F9;
+    --text-secondary: #CBD5E1;
+    --text-tertiary: #94A3B8;
+    
+    --border-color: rgba(255, 255, 255, 0.1);
+    --border-hover: rgba(255, 255, 255, 0.2);
+    
+    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
+    --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.4);
+    --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.5);
+    --shadow-glow: 0 0 20px rgba(59, 130, 246, 0.3);
+}
+
+/* ====== LIGHT THEME ====== */
+body.light-theme {
+    --primary: #F8FAFC;
+    --primary-light: #E2E8F0;
+    --primary-lighter: #CBD5E1;
+    
+    --accent-blue: #2563EB;
+    --accent-purple: #7C3AED;
+    --accent-cyan: #0891B2;
+    --accent-pink: #DB2777;
+    
+    --gradient-primary: linear-gradient(135deg, #2563EB 0%, #7C3AED 100%);
+    --gradient-secondary: linear-gradient(135deg, #7C3AED 0%, #DB2777 100%);
+    --gradient-tertiary: linear-gradient(135deg, #0891B2 0%, #2563EB 100%);
+    --gradient-text: linear-gradient(135deg, #2563EB 0%, #DB2777 100%);
+    
+    --surface-dark: #F8FAFC;
+    --surface-card: #FFFFFF;
+    --surface-hover: #E2E8F0;
+    --surface-active: #CBD5E1;
+    
+    --text-primary: #0F172A;
+    --text-secondary: #475569;
+    --text-tertiary: #78716C;
+    
+    --border-color: rgba(15, 23, 42, 0.1);
+    --border-hover: rgba(15, 23, 42, 0.2);
+    
+    --shadow-sm: 0 2px 8px rgba(15, 23, 42, 0.1);
+    --shadow-md: 0 4px 16px rgba(15, 23, 42, 0.15);
+    --shadow-lg: 0 8px 32px rgba(15, 23, 42, 0.2);
+    --shadow-glow: 0 0 20px rgba(37, 99, 235, 0.2);
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+    color: var(--text-primary);
+    background: var(--surface-dark);
+    overflow-x: hidden;
+    letter-spacing: 0.3px;
+    transition: background-color 0.5s cubic-bezier(0.34, 1.56, 0.64, 1), color 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+    position: relative;
+}
+
+/* ============================
+   ANIMATED BACKGROUND
+   ============================ */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        radial-gradient(circle at 20% 50%, rgba(59, 130, 246, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(139, 92, 246, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 40% 20%, rgba(6, 182, 212, 0.1) 0%, transparent 50%);
+    animation: bgShift 15s ease-in-out infinite;
+    pointer-events: none;
+    z-index: -1;
+}
+
+body.light-theme::before {
+    background: 
+        radial-gradient(circle at 20% 50%, rgba(37, 99, 235, 0.08) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(124, 58, 237, 0.08) 0%, transparent 50%),
+        radial-gradient(circle at 40% 20%, rgba(8, 145, 178, 0.08) 0%, transparent 50%);
+}
+
+@keyframes bgShift {
+    0% {
+        transform: translate(0, 0);
+    }
+    50% {
+        transform: translate(30px, -30px);
+    }
+    100% {
+        transform: translate(0, 0);
+    }
+}
+
+/* ============================
+   ANIMATED ELEMENTS
+   ============================ */
+.floating-cube, .floating-sphere, .floating-pyramid {
+    animation: float 6s ease-in-out infinite;
+}
+
+.floating-sphere {
+    animation-delay: 1s;
+    animation-duration: 7s;
+}
+
+.floating-pyramid {
+    animation-delay: 2s;
+    animation-duration: 8s;
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0px) rotate(0deg);
+    }
+    50% {
+        transform: translateY(-30px) rotate(180deg);
+    }
+}
+
+/* ============================
+   NAVIGATION BAR - AniGravity
+   ============================ */
+.navbar {
+    position: sticky;
+    top: 0;
+    background: rgba(15, 23, 42, 0.8);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border-color);
+    z-index: 100;
+    padding: 1rem 0;
+    box-shadow: var(--shadow-md);
+    transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.nav-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 2rem;
+}
+
+.logo {
+    font-size: 1.8rem;
+    font-weight: 700;
+    background: var(--gradient-text);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.logo:hover {
+    transform: scale(1.05) perspective(1000px) rotateX(5deg);
+}
+
+.logo i {
+    font-size: 2rem;
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.nav-menu {
+    display: flex;
+    list-style: none;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+.nav-link {
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-weight: 500;
+    padding: 0.8rem 1.2rem;
+    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    position: relative;
+    border-radius: 8px;
+}
+
+.nav-link:hover {
+    color: var(--text-primary);
+    background: rgba(59, 130, 246, 0.1);
+    transform: translateY(-2px);
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--gradient-primary);
+    transition: width 0.3s;
+    border-radius: 2px;
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
+
+.dropdown {
+    position: relative;
+}
+
+.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: var(--surface-card);
+    min-width: 200px;
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow-lg);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    margin-top: 1rem;
+    backdrop-filter: blur(10px);
+}
+
+.dropdown:hover .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.dropdown-menu a {
+    display: block;
+    padding: 1rem 1.5rem;
+    color: var(--text-secondary);
+    text-decoration: none;
+    transition: all 0.3s;
+    border-left: 3px solid transparent;
+}
+
+.dropdown-menu a:hover {
+    background: rgba(59, 130, 246, 0.1);
+    border-left-color: var(--accent-blue);
+    color: var(--text-primary);
+    padding-left: 2rem;
+}
+
+.hamburger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    gap: 6px;
+}
+
+.hamburger span {
+    width: 25px;
+    height: 3px;
+    background: var(--accent-blue);
+    border-radius: 5px;
+    transition: 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* ============================
+   THEME TOGGLE - AniGravity
+   ============================ */
+.theme-toggle {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(59, 130, 246, 0.1);
+    border: 1px solid var(--border-color);
+    padding: 0.6rem 0.8rem;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    margin-left: 1rem;
+}
+
+.theme-toggle:hover {
+    background: rgba(59, 130, 246, 0.2);
+    border-color: var(--border-hover);
+    transform: scale(1.05);
+}
+
+.theme-toggle i {
+    font-size: 1.1rem;
+    color: var(--accent-blue);
+    transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.theme-toggle i.sun {
+    opacity: 1;
+    transform: rotate(0deg);
+}
+
+.theme-toggle i.moon {
+    opacity: 0;
+    transform: rotate(-180deg);
+    position: absolute;
+}
+
+.light-theme .theme-toggle i.sun {
+    opacity: 0;
+    transform: rotate(180deg);
+}
+
+.light-theme .theme-toggle i.moon {
+    opacity: 1;
+    transform: rotate(0deg);
+    position: static;
+}
+
+/* ============================
+   HERO SECTION - AniGravity
+   ============================ */
+.hero {
+    background: var(--surface-dark);
+    color: var(--text-primary);
+    padding: 8rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    position: relative;
+    overflow: hidden;
+    background-image: 
+        radial-gradient(circle at 20% 50%, rgba(59, 130, 246, 0.15) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(139, 92, 246, 0.15) 0%, transparent 50%);
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(45deg, transparent 0%, rgba(59, 130, 246, 0.05) 50%, transparent 100%);
+    animation: slideBackground 8s linear infinite;
+}
+
+@keyframes slideBackground {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+}
+
+.hero-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1400px;
+    width: 100%;
+    gap: 4rem;
+    z-index: 2;
+    position: relative;
+}
+
+.hero-text h1 {
+    font-size: 4.5rem;
+    font-weight: 800;
+    margin-bottom: 1rem;
+    background: var(--gradient-text);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    letter-spacing: -2px;
+}
+
+.hero-text p {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+    color: var(--text-secondary);
+    font-weight: 400;
+}
+
+.tagline {
+    font-size: 1.1rem;
+    margin-bottom: 2rem !important;
+    color: var(--text-tertiary);
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 1rem;
+}
+
+.hero-visual {
+    flex: 1;
+    position: relative;
+    height: 400px;
+    perspective: 1000px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.floating-cube,
+.floating-sphere,
+.floating-pyramid {
+    position: absolute;
+    animation: float-anim 6s ease-in-out infinite;
+}
+
+.floating-cube {
+    width: 150px;
+    height: 150px;
+    background: rgba(59, 130, 246, 0.1);
+    border: 2px solid var(--accent-blue);
+    top: 20px;
+    left: 0;
+    border-radius: 15px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 0 30px rgba(59, 130, 246, 0.3);
+}
+
+.floating-sphere {
+    width: 200px;
+    height: 200px;
+    background: rgba(139, 92, 246, 0.1);
+    border: 2px solid var(--accent-purple);
+    border-radius: 50%;
+    top: 100px;
+    right: 0;
+    animation: float-anim 8s ease-in-out infinite;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 0 40px rgba(139, 92, 246, 0.3);
+}
+
+.floating-pyramid {
+    width: 0;
+    height: 0;
+    border-left: 75px solid transparent;
+    border-right: 75px solid transparent;
+    border-bottom: 130px solid rgba(6, 182, 212, 0.2);
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    filter: drop-shadow(0 0 30px rgba(6, 182, 212, 0.3));
+}
+
+@keyframes float-anim {
+    0%, 100% { transform: translateY(0px) rotateX(0deg); }
+    50% { transform: translateY(-20px) rotateX(10deg); }
+}
+
+/* ============================
+   BUTTONS & COMMON ELEMENTS - AniGravity
+   ============================ */
+.btn {
+    padding: 0.9rem 2.2rem;
+    border: none;
+    border-radius: 10px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--gradient-primary);
+    opacity: 0;
+    transition: opacity 0.3s;
+    z-index: -1;
+}
+
+.btn-primary {
+    background: var(--gradient-primary);
+    color: white;
+    box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
+    border: 1px solid rgba(59, 130, 246, 0.5);
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-primary::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+}
+
+.btn-primary:hover::after {
+    width: 300px;
+    height: 300px;
+}
+
+.btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 30px rgba(59, 130, 246, 0.5);
+    border-color: rgba(59, 130, 246, 1);
+}
+
+.btn-primary:active {
+    transform: translateY(-1px);
+}
+
+.btn-secondary {
+    background: rgba(59, 130, 246, 0.1);
+    color: var(--accent-blue);
+    border: 1.5px solid var(--accent-blue);
+    box-shadow: 0 0 15px rgba(59, 130, 246, 0.2);
+    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.btn-secondary:hover {
+    background: rgba(59, 130, 246, 0.2);
+    transform: translateY(-3px);
+    box-shadow: 0 5px 25px rgba(59, 130, 246, 0.4);
+}
+
+.btn:active {
+    transform: translateY(-1px);
+}
+
+/* ============================
+   CARDS & GLASS MORPHISM - AniGravity
+   ============================ */
+.card-3d {
+    background: rgba(26, 31, 58, 0.6);
+    backdrop-filter: blur(20px);
+    border-radius: 16px;
+    padding: 2rem;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    border: 1px solid var(--border-color);
+    position: relative;
+    overflow: hidden;
+}
+
+.card-3d::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -50%;
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, rgba(59, 130, 246, 0.1) 0%, transparent 70%);
+    opacity: 0;
+    transition: opacity 0.3s;
+    pointer-events: none;
+}
+
+.card-3d:hover::before {
+    opacity: 1;
+}
+
+.card-3d:hover {
+    transform: translateY(-8px);
+    border-color: var(--border-hover);
+    box-shadow: 0 12px 48px rgba(59, 130, 246, 0.2);
+}
+
+/* ============================
+   SECTIONS - AniGravity
+   ============================ */
+section {
+    padding: 5rem 2rem;
+    max-width: 1400px;
+    margin: 0 auto;
+    position: relative;
+}
+
+section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: 
+        radial-gradient(circle at 20% 50%, rgba(59, 130, 246, 0.05) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(139, 92, 246, 0.05) 0%, transparent 50%);
+    pointer-events: none;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 4rem;
+    position: relative;
+    z-index: 1;
+}
+
+.section-title h2 {
+    font-size: 2.8rem;
+    background: var(--gradient-text);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 0.8rem;
+    font-weight: 800;
+    letter-spacing: -1px;
+}
+
+.section-title h2::after {
+    content: '';
+    position: absolute;
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 4px;
+    background: var(--gradient-primary);
+    border-radius: 2px;
+}
+
+.section-title p {
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+    font-weight: 400;
+}
+
+/* ============================
+   ABOUT SECTION
+   ============================ */
+.about {
+    background: var(--surface-dark);
+}
+
+.about-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    position: relative;
+    z-index: 1;
+}
+
+.about-card {
+    background: rgba(26, 31, 58, 0.6);
+    backdrop-filter: blur(10px);
+    padding: 2.5rem;
+    border-radius: 16px;
+    text-align: center;
+    box-shadow: var(--shadow-md);
+    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    border: 1px solid var(--border-color);
+    position: relative;
+    overflow: hidden;
+}
+
+.about-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: var(--gradient-primary);
+    transform: scaleX(0);
+    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.about-card:hover::before {
+    transform: scaleX(1);
+}
+
+.about-card:hover {
+    transform: translateY(-12px);
+    box-shadow: 0 15px 50px rgba(59, 130, 246, 0.2);
+    border-color: var(--border-hover);
+}
+
+.about-card i {
+    font-size: 3rem;
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 1rem;
+}
+
+.about-card h3 {
+    color: var(--text-primary);
+    margin-bottom: 0.8rem;
+    font-size: 1.3rem;
+    font-weight: 700;
+}
+
+.about-card p {
+    color: var(--text-secondary);
+    line-height: 1.6;
+}
+
+/* ============================
+   CALCULATORS SECTION - AniGravity
+   ============================ */
+.calculators {
+    background: var(--surface-dark);
+}
+
+.calculator-card {
+    margin-bottom: 3rem;
+    background: rgba(26, 31, 58, 0.6);
+    backdrop-filter: blur(20px);
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid var(--border-color);
+    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.calculator-card:hover {
+    border-color: var(--border-hover);
+    box-shadow: 0 12px 48px rgba(59, 130, 246, 0.15);
+}
+
+.card-header {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 2rem;
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(139, 92, 246, 0.1) 100%);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.card-header i {
+    font-size: 2.5rem;
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.card-header h3 {
+    color: var(--text-primary);
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin: 0;
+}
+
+.card-body {
+    padding: 2rem;
+}
+
+.input-group {
+    margin-bottom: 1.5rem;
+}
+
+.input-group label,
+.form-group label {
+    display: block;
+    margin-bottom: 0.8rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    font-size: 0.95rem;
+}
+
+.input-field,
+select,
+textarea {
+    width: 100%;
+    padding: 1rem;
+    border: 1.5px solid var(--border-color);
+    border-radius: 10px;
+    font-size: 1rem;
+    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    font-family: inherit;
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--text-primary);
+    position: relative;
+}
+
+body.light-theme .input-field,
+body.light-theme select,
+body.light-theme textarea {
+    background: rgba(37, 99, 235, 0.03);
+}
+
+.input-field::placeholder,
+select::placeholder,
+textarea::placeholder {
+    color: var(--text-tertiary);
+}
+
+.input-field:focus,
+select:focus,
+textarea:focus {
+    outline: none;
+    border-color: var(--accent-blue);
+    background: rgba(59, 130, 246, 0.08);
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15), inset 0 0 20px rgba(59, 130, 246, 0.05);
+    transform: translateY(-2px);
+}
+
+body.light-theme .input-field:focus,
+body.light-theme select:focus,
+body.light-theme textarea:focus {
+    background: rgba(37, 99, 235, 0.1);
+}
+
+.input-field:hover,
+select:hover,
+textarea:hover {
+    border-color: var(--border-hover);
+    background: rgba(59, 130, 246, 0.04);
+}
+
+.result-box {
+    margin-top: 1.5rem;
+    padding: 1.5rem;
+    background: rgba(59, 130, 246, 0.05);
+    border-left: 4px solid var(--accent-blue);
+    border-radius: 10px;
+    min-height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    color: var(--text-primary);
+    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    border: 1px solid var(--border-color);
+    animation: slideUp 0.5s ease-out;
+}
+
+.result-box.success {
+    background: rgba(6, 182, 212, 0.05);
+    border-left-color: var(--accent-cyan);
+    border-color: rgba(6, 182, 212, 0.2);
+}
+
+.result-box.error {
+    background: rgba(236, 72, 153, 0.05);
+    border-left-color: var(--accent-pink);
+    border-color: rgba(236, 72, 153, 0.2);
+}
+
+/* ============================
+   TABS - AniGravity
+   ============================ */
+.tabs {
+    display: flex;
+    gap: 0.8rem;
+    margin-bottom: 2rem;
+    border-bottom: 1px solid var(--border-color);
+    flex-wrap: wrap;
+    padding-bottom: 0;
+}
+
+.tab-btn {
+    padding: 1rem 1.5rem;
+    border: none;
+    background: transparent;
+    color: var(--text-secondary);
+    cursor: pointer;
+    font-weight: 600;
+    border-bottom: 3px solid transparent;
+    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    margin-bottom: -1px;
+    position: relative;
+}
+
+.tab-btn:hover {
+    color: var(--accent-blue);
+    background: rgba(59, 130, 246, 0.05);
+    border-radius: 8px 8px 0 0;
+}
+
+.tab-btn.active {
+    color: var(--text-primary);
+    border-bottom-color: var(--accent-blue);
+    background: rgba(59, 130, 246, 0.05);
+}
+
+.tab-content {
+    display: none;
+    animation: slideIn 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.tab-content.active {
+    display: block;
+}
+
+@keyframes slideIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.physics-inputs,
+.interest-inputs,
+.exam-inputs {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+}
+
+.info-text {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    margin-bottom: 1rem;
+    padding: 1rem;
+    background: rgba(59, 130, 246, 0.05);
+    border-radius: 10px;
+    border-left: 3px solid var(--accent-blue);
+}
+
+.grade-chart {
+    margin-top: 1rem;
+    padding: 1.5rem;
+    background: rgba(59, 130, 246, 0.05);
+    border-radius: 10px;
+    font-size: 0.9rem;
+    border: 1px solid var(--border-color);
+}
+
+.grade-chart p {
+    margin-bottom: 0.5rem;
+    color: var(--text-secondary);
+}
+
+/* ============================
+   NEWS SECTION - AniGravity
+   ============================ */
+.news {
+    background: var(--surface-dark);
+}
+
+.news-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    position: relative;
+    z-index: 1;
+}
+
+.news-card {
+    background: rgba(26, 31, 58, 0.6);
+    backdrop-filter: blur(10px);
+    border-radius: 16px;
+    overflow: hidden;
+    position: relative;
+    border: 1px solid var(--border-color);
+    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.news-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: var(--gradient-secondary);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    z-index: 10;
+}
+
+.news-card:hover::before {
+    transform: scaleX(1);
+}
+
+.news-card:hover {
+    transform: translateY(-10px);
+    border-color: var(--border-hover);
+    box-shadow: 0 12px 40px rgba(139, 92, 246, 0.2);
+}
+
+.news-badge {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    background: var(--gradient-primary);
+    color: white;
+    padding: 0.5rem 1.2rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    z-index: 5;
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4);
+}
+
+.news-card h3 {
+    padding: 2rem 1.5rem 0 1.5rem;
+    color: var(--text-primary);
+    margin-bottom: 0.8rem;
+    font-size: 1.2rem;
+    font-weight: 700;
+}
+
+.news-card p {
+    padding: 0 1.5rem;
+    color: var(--text-secondary);
+    margin-bottom: 1rem;
+    line-height: 1.7;
+}
+
+.read-more {
+    display: inline-block;
+    padding: 0 1.5rem 1.5rem 1.5rem;
+    color: var(--accent-blue);
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.read-more:hover {
+    color: var(--accent-cyan);
+    transform: translateX(5px);
+}
+
+/* ============================
+   WEATHER SECTION - AniGravity
+   ============================ */
+.weather {
+    background: var(--surface-dark);
+}
+
+.weather-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-bottom: 2rem;
+    position: relative;
+    z-index: 1;
+}
+
+.weather-main {
+    grid-column: 1 / -1;
+}
+
+.weather-info {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+    background: rgba(26, 31, 58, 0.6);
+    backdrop-filter: blur(10px);
+    padding: 2rem;
+    border-radius: 16px;
+    border: 1px solid var(--border-color);
+    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.weather-info::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+    transition: left 0.5s;
+}
+
+.weather-info:hover::before {
+    left: 100%;
+}
+
+.weather-info:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 24px rgba(59, 130, 246, 0.15);
+    border-color: var(--border-hover);
+}
+
+.weather-temp {
+    font-size: 3.5rem;
+    color: var(--accent-blue);
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-weight: 800;
+}
+
+.weather-temp i {
+    font-size: 4rem;
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.weather-details p {
+    margin: 0.8rem 0;
+    color: var(--text-secondary);
+    font-weight: 500;
+}
+
+.climate-info {
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(139, 92, 246, 0.1) 100%);
+    padding: 2.5rem;
+    border-radius: 16px;
+    border-left: 4px solid var(--accent-blue);
+    border: 1px solid var(--border-color);
+    position: relative;
+    z-index: 1;
+}
+
+.climate-info h4 {
+    color: var(--text-primary);
+    margin-bottom: 1.5rem;
+    font-size: 1.3rem;
+    font-weight: 700;
+}
+
+.climate-info p {
+    margin-bottom: 1rem;
+    color: var(--text-secondary);
+    line-height: 1.8;
+    font-weight: 500;
+}
+
+/* ============================
+   AI BUILDER SECTION - AniGravity
+   ============================ */
+.ai-builder {
+    background: var(--surface-dark);
+}
+
+.ai-builder-content {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 2rem;
+    position: relative;
+    z-index: 1;
+}
+
+.ai-builder-card {
+    background: rgba(26, 31, 58, 0.6) !important;
+}
+
+.ai-builder-card i {
+    font-size: 3.5rem;
+    background: var(--gradient-secondary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 1rem;
+}
+
+.ai-builder-card h3 {
+    color: var(--text-primary);
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.ai-builder-card p {
+    color: var(--text-secondary);
+    margin-bottom: 1.5rem;
+}
+
+.ai-features {
+    background: rgba(26, 31, 58, 0.6);
+    backdrop-filter: blur(10px);
+    padding: 2rem;
+    border-radius: 16px;
+    height: fit-content;
+    border: 1px solid var(--border-color);
+    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.ai-features:hover {
+    border-color: var(--border-hover);
+}
+
+.ai-features h4 {
+    color: var(--text-primary);
+    margin-bottom: 1.5rem;
+    font-size: 1.2rem;
+    font-weight: 700;
+}
+
+.ai-features ul {
+    list-style: none;
+}
+
+.ai-features li {
+    padding: 0.8rem 0;
+    color: var(--text-secondary);
+    font-weight: 500;
+    transition: all 0.3s;
+}
+
+.ai-features li:hover {
+    color: var(--accent-blue);
+    padding-left: 0.5rem;
+}
+
+/* ============================
+   FEEDBACK SECTION - AniGravity
+   ============================ */
+.feedback {
+    background: var(--surface-dark);
+}
+
+.feedback-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    position: relative;
+    z-index: 1;
+}
+
+.feedback-form {
+    background: rgba(26, 31, 58, 0.6) !important;
+    padding: 2.5rem !important;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.contact-info {
+    background: rgba(26, 31, 58, 0.6) !important;
+    padding: 2.5rem !important;
+}
+
+.contact-info h3 {
+    color: var(--text-primary);
+    margin-bottom: 1.5rem;
+    font-size: 1.3rem;
+    font-weight: 700;
+}
+
+.contact-info p {
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    color: var(--text-secondary);
+    font-weight: 500;
+}
+
+.contact-info i {
+    color: var(--accent-blue);
+    font-size: 1.2rem;
+}
+
+.contact-info a {
+    color: var(--accent-blue);
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.contact-info a:hover {
+    color: var(--accent-cyan);
+}
+
+.social-links {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.social-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.9rem 1.5rem;
+    background: rgba(59, 130, 246, 0.1);
+    color: var(--accent-blue);
+    text-decoration: none;
+    border-radius: 10px;
+    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    font-weight: 600;
+    border: 1px solid rgba(59, 130, 246, 0.3);
+}
+
+.social-btn:hover {
+    background: var(--gradient-primary);
+    color: white;
+    transform: translateY(-3px);
+    box-shadow: 0 5px 20px rgba(59, 130, 246, 0.3);
+    border-color: rgba(59, 130, 246, 1);
+}
+
+.social-icons {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.social-icons a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 45px;
+    height: 45px;
+    background: rgba(59, 130, 246, 0.1);
+    color: var(--accent-blue);
+    border-radius: 50%;
+    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    border: 1px solid rgba(59, 130, 246, 0.3);
+}
+
+.social-icons a:hover {
+    background: var(--gradient-primary);
+    color: white;
+    transform: scale(1.1) rotateZ(10deg);
+    box-shadow: 0 5px 15px rgba(59, 130, 246, 0.3);
+}
+
+/* ============================
+   GORKHA PATRA SECTION - AniGravity
+   ============================ */
+.gorkha-patra {
+    background: var(--surface-dark);
+}
+
+.gorkha-container {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    z-index: 1;
+}
+
+.gorkha-link {
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+    padding: 2rem;
+    background: rgba(26, 31, 58, 0.6);
+    backdrop-filter: blur(10px);
+    border-radius: 16px;
+    text-decoration: none;
+    color: var(--text-primary);
+    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    border: 1px solid var(--border-color);
+}
+
+.gorkha-link:hover {
+    transform: scale(1.05) translateY(-5px);
+    box-shadow: 0 12px 40px rgba(59, 130, 246, 0.2);
+    border-color: var(--border-hover);
+}
+
+.gorkha-link img {
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+    margin-bottom: 1rem;
+}
+
+.gorkha-link p {
+    color: var(--accent-blue);
+    font-weight: 700;
+    font-size: 1.1rem;
+    margin: 0;
+}
+
+/* ============================
+   ADS SECTION - AniGravity
+   ============================ */
+.ads-section {
+    background: var(--surface-dark);
+    padding: 3rem 2rem;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+}
+
+.ad-banner {
+    background: var(--gradient-secondary) !important;
+    color: white;
+    padding: 3rem;
+    border-radius: 16px;
+    border: 1px solid rgba(236, 72, 153, 0.3);
+}
+
+.ad-banner h3 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+/* ============================
+   FOOTER - AniGravity
+   ============================ */
+.footer {
+    background: linear-gradient(135deg, rgba(15, 23, 42, 0.8) 0%, rgba(26, 31, 58, 0.8) 100%);
+    backdrop-filter: blur(10px);
+    color: var(--text-secondary);
+    padding: 3rem 2rem 1rem;
+    margin-top: 5rem;
+    border-top: 1px solid var(--border-color);
+}
+
+.footer-content {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 3rem;
+    margin-bottom: 2rem;
+}
+
+.footer-section h4 {
+    margin-bottom: 1rem;
+    color: var(--text-primary);
+    font-size: 1.1rem;
+    font-weight: 700;
+    background: var(--gradient-text);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.footer-section ul {
+    list-style: none;
+}
+
+.footer-section a {
+    color: var(--text-secondary);
+    text-decoration: none;
+    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    display: block;
+    margin-bottom: 0.8rem;
+    font-weight: 500;
+}
+
+.footer-section a:hover {
+    color: var(--accent-blue);
+    transform: translateX(5px);
+}
+
+.footer-section p {
+    color: var(--text-secondary);
+    line-height: 1.8;
+    font-weight: 500;
+}
+
+.footer-bottom {
+    text-align: center;
+    border-top: 1px solid var(--border-color);
+    padding-top: 2rem;
+    color: var(--text-tertiary);
+}
+
+.footer-bottom p {
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+}
+
+/* ============================
+   RESPONSIVE DESIGN - AniGravity
+   ============================ */
+@media (max-width: 768px) {
+    :root {
+        --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.3);
+        --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.4);
+    }
+
+    .nav-menu {
+        position: fixed;
+        left: -100%;
+        top: 60px;
+        flex-direction: column;
+        background: rgba(15, 23, 42, 0.95);
+        width: 100%;
+        text-align: center;
+        transition: 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+        gap: 0;
+        padding: 2rem 0;
+        z-index: 99;
+        border-bottom: 1px solid var(--border-color);
+    }
+
+    .nav-menu.active {
+        left: 0;
+    }
+
+    .hamburger {
+        display: flex;
+    }
+
+    .hero-content {
+        flex-direction: column;
+        text-align: center;
+        gap: 2rem;
+    }
+
+    .hero-text h1 {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+    }
+
+    .hero-text p {
+        font-size: 1.1rem;
+    }
+
+    .hero-buttons {
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .hero-visual {
+        height: 250px;
+    }
+
+    .section-title h2 {
+        font-size: 1.8rem;
+    }
+
+    .calculator-card {
+        margin-bottom: 1.5rem;
+    }
+
+    .weather-container {
+        grid-template-columns: 1fr;
+    }
+
+    .ai-builder-content {
+        grid-template-columns: 1fr;
+    }
+
+    .feedback-container {
+        grid-template-columns: 1fr;
+    }
+
+    .tabs {
+        gap: 0.4rem;
+    }
+
+    .tab-btn {
+        padding: 0.8rem 1rem;
+        font-size: 0.9rem;
+    }
+
+    .social-links {
+        flex-wrap: wrap;
+    }
+
+    .nav-link {
+        font-size: 0.95rem;
+    }
+
+    .dropdown-menu {
+        position: static;
+        opacity: 1;
+        visibility: visible;
+        transform: none;
+        box-shadow: none;
+        background: rgba(26, 31, 58, 0.6);
+        margin: 0;
+        border: 1px solid var(--border-color);
+    }
+
+    section {
+        padding: 3rem 1rem;
+    }
+
+    .hero {
+        padding: 4rem 1rem;
+        min-height: auto;
+    }
+
+    .card-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .card-header i {
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-text h1 {
+        font-size: 1.8rem;
+    }
+
+    .btn {
+        font-size: 0.9rem;
+        padding: 0.8rem 1.5rem;
+    }
+
+    .section-title h2 {
+        font-size: 1.5rem;
+    }
+
+    .news-grid,
+    .about-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .tabs {
+        flex-direction: column;
+    }
+
+    .tab-btn {
+        width: 100%;
+        border-bottom: none;
+        border-left: 3px solid transparent;
+        text-align: left;
+        margin-bottom: 0;
+        border-radius: 8px;
+    }
+
+    .tab-btn.active {
+        border-bottom: none;
+        border-left-color: var(--accent-blue);
+    }
+
+    .social-links {
+        flex-direction: column;
+    }
+
+    .social-btn {
+        justify-content: center;
+        width: 100%;
+    }
+
+    .footer-content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .weather-temp {
+        font-size: 2.5rem;
+    }
+
+    .card-header h3 {
+        font-size: 1.1rem;
+    }
+
+    .input-field,
+    select,
+    textarea {
+        font-size: 16px;
+    }
+}
+
+/* ============================
+   ANIMATIONS & EFFECTS - AniGravity
+   ============================ */
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes pulse {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.7;
+    }
+}
+
+@keyframes glow {
+    0% { box-shadow: 0 0 5px rgba(59, 130, 246, 0.5); }
+    50% { box-shadow: 0 0 20px rgba(59, 130, 246, 0.8); }
+    100% { box-shadow: 0 0 5px rgba(59, 130, 246, 0.5); }
+}
+
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes shimmer {
+    0% {
+        background-position: -1000px 0;
+    }
+    100% {
+        background-position: 1000px 0;
+    }
+}
+
+@keyframes scaleIn {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes heartbeat {
+    0% {
+        transform: scale(1);
+    }
+    10%, 20% {
+        transform: scale(0.95);
+    }
+    30% {
+        transform: scale(1);
+    }
+}
+
+.card-3d {
+    animation: slideUp 0.6s ease-out forwards;
+}
+
+.card-3d:nth-child(2) {
+    animation-delay: 0.1s;
+}
+
+.card-3d:nth-child(3) {
+    animation-delay: 0.2s;
+}
+
+/* Responsive Animations */
+@media (max-width: 768px) {
+    .card-3d,
+    .about-card,
+    .news-card,
+    .weather-card {
+        animation: slideUp 0.5s ease-out forwards !important;
+    }
+    
+    .nav-menu.active {
+        animation: slideDown 0.3s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+    }
+}
+
+/* Interactive Element Animations */
+.btn:active {
+    animation: pulse 0.3s ease-out;
+}
+
+.tab-btn.active {
+    animation: scaleIn 0.3s ease-out;
+}
+
+/* Hover Animation for Cards */
+.card-3d:hover,
+.about-card:hover,
+.news-card:hover,
+.social-btn:hover {
+    animation: heartbeat 0.6s ease-in-out;
+}
+
+/* ============================
+   SCROLLBAR STYLING - AniGravity
+   ============================ */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--surface-dark);
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, var(--accent-blue) 0%, var(--accent-purple) 100%);
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, var(--accent-cyan) 0%, var(--accent-blue) 100%);
+}

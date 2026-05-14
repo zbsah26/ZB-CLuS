@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="ZB CLuS - Advanced Calculator & Educational Portal for Nepal">
+    <meta name="keywords" content="calculator, educational, solver, Nepal, GPA">
+    <meta name="author" content="Jibendar Sah">
+    <meta name="theme-color" content="#0F172A">
+    <title>ZB CLuS - Advanced Calculator & Educational Portal</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="advanced.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <i class="fas fa-calculator"></i>
+                <span>ZB CLuS</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#home" class="nav-link">Home</a></li>
+                <li class="dropdown">
+                    <a href="#calculators" class="nav-link">Calculators <i class="fas fa-chevron-down"></i></a>
+                    <div class="dropdown-menu">
+                        <a href="#math-solver">Math Solver</a>
+                        <a href="#physics-solver">Physics Solver</a>
+                        <a href="#gpa-calc">GPA Calculator</a>
+                        <a href="#interest-calc">Interest Calculator</a>
+                        <a href="#exam-helper">Exam Result Cracker</a>
+                    </div>
+                </li>
+                <li><a href="#news" class="nav-link">News</a></li>
+                <li><a href="#weather" class="nav-link">Weather</a></li>
+                <li><a href="#ai-builder" class="nav-link">AI Builder</a></li>
+                <li><a href="#feedback" class="nav-link">Feedback</a></li>
+            </ul>
+            <button class="theme-toggle" id="themeToggle" title="Toggle Theme">
+                <i class="fas fa-sun sun"></i>
+                <i class="fas fa-moon moon"></i>
+            </button>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1>ZB CLuS</h1>
+                <p>Advanced Numerical & Educational Calculator</p>
+                <p class="tagline">Your All-in-One Solution for Mathematics, Physics & Education</p>
+                <div class="hero-buttons">
+                    <button class="btn btn-primary" onclick="scrollToSection('calculators')">Get Started</button>
+                    <button class="btn btn-secondary" onclick="scrollToSection('about')">Learn More</button>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="floating-cube"></div>
+                <div class="floating-sphere"></div>
+                <div class="floating-pyramid"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="section-title">
+            <h2>About ZB CLuS</h2>
+            <p>Comprehensive Educational & Calculation Platform</p>
+        </div>
+        <div class="about-grid">
+            <div class="about-card">
+                <i class="fas fa-calculator"></i>
+                <h3>Mathematical Solver</h3>
+                <p>Advanced calculations and equation solving</p>
+            </div>
+            <div class="about-card">
+                <i class="fas fa-atom"></i>
+                <h3>Physics Solver</h3>
+                <p>Physics formulas and numerical problems</p>
+            </div>
+            <div class="about-card">
+                <i class="fas fa-graduation-cap"></i>
+                <h3>Exam Helper</h3>
+                <p>NEB/SEE and +2 result predictions</p>
+            </div>
+            <div class="about-card">
+                <i class="fas fa-percentage"></i>
+                <h3>GPA Converter</h3>
+                <p>Nepal board GPA to percentage conversion</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Calculators Section -->
+    <section id="calculators" class="calculators">
+        <div class="section-title">
+            <h2>Calculators & Tools</h2>
+        </div>
+
+        <!-- Mathematical Solver -->
+        <div id="math-solver" class="calculator-card card-3d">
+            <div class="card-header">
+                <i class="fas fa-square-root-alt"></i>
+                <h3>Mathematical Numerical Solver</h3>
+            </div>
+            <div class="card-body">
+                <div class="input-group">
+                    <label>Expression:</label>
+                    <input type="text" id="mathInput" placeholder="e.g., 2+3*4, sqrt(16), sin(90)" class="input-field">
+                </div>
+                <button class="btn btn-primary" onclick="solveMath()">Calculate</button>
+                <div id="mathResult" class="result-box"></div>
+            </div>
+        </div>
+
+        <!-- Physics Solver -->
+        <div id="physics-solver" class="calculator-card card-3d">
+            <div class="card-header">
+                <i class="fas fa-atom"></i>
+                <h3>Physics Numerical Solver</h3>
+            </div>
+            <div class="card-body">
+                <div class="tabs">
+                    <button class="tab-btn active" onclick="openPhysicsTab(event, 'motion')">Motion</button>
+                    <button class="tab-btn" onclick="openPhysicsTab(event, 'force')">Force</button>
+                    <button class="tab-btn" onclick="openPhysicsTab(event, 'energy')">Energy</button>
+                </div>
+
+                <div id="motion" class="tab-content active">
+                    <label>Find Final Velocity (v = u + at)</label>
+                    <div class="physics-inputs">
+                        <input type="number" id="u" placeholder="Initial Velocity (u)" class="input-field">
+                        <input type="number" id="a" placeholder="Acceleration (a)" class="input-field">
+                        <input type="number" id="t" placeholder="Time (t)" class="input-field">
+                    </div>
+                    <button class="btn btn-primary" onclick="solveMotion()">Calculate</button>
+                    <div id="motionResult" class="result-box"></div>
+                </div>
+
+                <div id="force" class="tab-content">
+                    <label>Find Force (F = ma)</label>
+                    <div class="physics-inputs">
+                        <input type="number" id="mass" placeholder="Mass (kg)" class="input-field">
+                        <input type="number" id="accel" placeholder="Acceleration (m/s²)" class="input-field">
+                    </div>
+                    <button class="btn btn-primary" onclick="solveForce()">Calculate</button>
+                    <div id="forceResult" class="result-box"></div>
+                </div>
+
+                <div id="energy" class="tab-content">
+                    <label>Find Kinetic Energy (KE = ½mv²)</label>
+                    <div class="physics-inputs">
+                        <input type="number" id="eMass" placeholder="Mass (kg)" class="input-field">
+                        <input type="number" id="velocity" placeholder="Velocity (m/s)" class="input-field">
+                    </div>
+                    <button class="btn btn-primary" onclick="solveEnergy()">Calculate</button>
+                    <div id="energyResult" class="result-box"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- GPA to Percentage Calculator -->
+        <div id="gpa-calc" class="calculator-card card-3d">
+            <div class="card-header">
+                <i class="fas fa-graduation-cap"></i>
+                <h3>GPA to Percentage Calculator (NEB/SEE/+2)</h3>
+            </div>
+            <div class="card-body">
+                <p class="info-text">Nepal Board Grading System</p>
+                <div class="input-group">
+                    <label>Enter GPA (0.0 - 4.0):</label>
+                    <input type="number" id="gpaInput" placeholder="e.g., 3.5" min="0" max="4" step="0.1" class="input-field">
+                </div>
+                <button class="btn btn-primary" onclick="convertGPA()">Convert</button>
+                <div id="gpaResult" class="result-box"></div>
+                <div class="grade-chart">
+                    <p><strong>Grade Scale Reference:</strong></p>
+                    <p>A+ (90-100%): 4.0 | A (85-89%): 3.6 | B+ (80-84%): 3.2 | B (75-79%): 2.8 | C (70-74%): 2.4</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Interest Calculator -->
+        <div id="interest-calc" class="calculator-card card-3d">
+            <div class="card-header">
+                <i class="fas fa-percent"></i>
+                <h3>Interest Calculator (Multi-Country)</h3>
+            </div>
+            <div class="card-body">
+                <div class="tabs">
+                    <button class="tab-btn active" onclick="openInterestTab(event, 'simple')">Simple Interest</button>
+                    <button class="tab-btn" onclick="openInterestTab(event, 'compound')">Compound Interest</button>
+                </div>
+
+                <div id="simple" class="tab-content active">
+                    <label>Select Country & Calculate Simple Interest</label>
+                    <select id="countrySimple" class="input-field" onchange="updateCountryInfo('simple')">
+                        <option value="nepal">Nepal (Interest Rate %)</option>
+                        <option value="india">India (Interest Rate %)</option>
+                        <option value="china">China (Interest Rate %)</option>
+                        <option value="usa">USA (Interest Rate %)</option>
+                    </select>
+                    <div class="interest-inputs">
+                        <input type="number" id="principal" placeholder="Principal Amount" class="input-field">
+                        <input type="number" id="rateSimple" placeholder="Rate (% per annum)" class="input-field">
+                        <input type="number" id="timeSimple" placeholder="Time (years)" class="input-field">
+                    </div>
+                    <button class="btn btn-primary" onclick="calculateSimpleInterest()">Calculate SI</button>
+                    <div id="siResult" class="result-box"></div>
+                </div>
+
+                <div id="compound" class="tab-content">
+                    <label>Select Country & Calculate Compound Interest</label>
+                    <select id="countryCompound" class="input-field" onchange="updateCountryInfo('compound')">
+                        <option value="nepal">Nepal (Interest Rate %)</option>
+                        <option value="india">India (Interest Rate %)</option>
+                        <option value="china">China (Interest Rate %)</option>
+                        <option value="usa">USA (Interest Rate %)</option>
+                    </select>
+                    <div class="interest-inputs">
+                        <input type="number" id="principalCI" placeholder="Principal Amount" class="input-field">
+                        <input type="number" id="rateCompound" placeholder="Rate (% per annum)" class="input-field">
+                        <input type="number" id="timeCompound" placeholder="Time (years)" class="input-field">
+                        <select id="frequency" class="input-field">
+                            <option value="1">Annually</option>
+                            <option value="2">Semi-Annually</option>
+                            <option value="4">Quarterly</option>
+                            <option value="12">Monthly</option>
+                        </select>
+                    </div>
+                    <button class="btn btn-primary" onclick="calculateCompoundInterest()">Calculate CI</button>
+                    <div id="ciResult" class="result-box"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Exam Result Cracker -->
+        <div id="exam-helper" class="calculator-card card-3d">
+            <div class="card-header">
+                <i class="fas fa-chart-line"></i>
+                <h3>Exam Result Predictor (NEB/SEE/+2)</h3>
+            </div>
+            <div class="card-body">
+                <p class="info-text">Predict your final percentage based on obtained marks</p>
+                <div class="exam-inputs">
+                    <input type="number" id="obtainedMarks" placeholder="Obtained Marks" class="input-field">
+                    <input type="number" id="totalMarks" placeholder="Total Marks" class="input-field">
+                </div>
+                <button class="btn btn-primary" onclick="predictExamResult()">Predict Result</button>
+                <div id="examResult" class="result-box"></div>
+            </div>
+        </div>
+
+        <!-- More Calculation Features -->
+        <div id="more-calcs" class="calculator-card card-3d">
+            <div class="card-header">
+                <i class="fas fa-calculator"></i>
+                <h3>Additional Calculators (Nepal System)</h3>
+            </div>
+            <div class="card-body">
+                <div class="tabs">
+                    <button class="tab-btn active" onclick="openMoreTab(event, 'discount')">Discount</button>
+                    <button class="tab-btn" onclick="openMoreTab(event, 'percentage')">Percentage</button>
+                    <button class="tab-btn" onclick="openMoreTab(event, 'tax')">Tax Calculation</button>
+                </div>
+
+                <div id="discount" class="tab-content active">
+                    <input type="number" id="original" placeholder="Original Price" class="input-field">
+                    <input type="number" id="discountPercent" placeholder="Discount (%)" class="input-field">
+                    <button class="btn btn-primary" onclick="calculateDiscount()">Calculate Discount</button>
+                    <div id="discountResult" class="result-box"></div>
+                </div>
+
+                <div id="percentage" class="tab-content">
+                    <input type="number" id="part" placeholder="Part Value" class="input-field">
+                    <input type="number" id="whole" placeholder="Whole Value" class="input-field">
+                    <button class="btn btn-primary" onclick="calculatePercentage()">Calculate %</button>
+                    <div id="percentResult" class="result-box"></div>
+                </div>
+
+                <div id="tax" class="tab-content">
+                    <input type="number" id="taxAmount" placeholder="Amount" class="input-field">
+                    <input type="number" id="taxRate" placeholder="Tax Rate (%)" class="input-field">
+                    <button class="btn btn-primary" onclick="calculateTax()">Calculate Tax</button>
+                    <div id="taxResult" class="result-box"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- News Section -->
+    <section id="news" class="news">
+        <div class="section-title">
+            <h2>Latest News & Updates</h2>
+            <p>Lokasewa & Educational Updates</p>
+        </div>
+        <div class="news-grid">
+            <div class="news-card card-3d">
+                <div class="news-badge">Breaking</div>
+                <h3>Lokasewa Exam Date Announced</h3>
+                <p>The National Examination Board has announced the date for Lokasewa (Civil Service) examination...</p>
+                <a href="https://gorkhapatraonline.com/categories/loksewa" target="_blank" class="read-more">Read More →</a>
+            </div>
+            <div class="news-card card-3d">
+                <div class="news-badge">Update</div>
+                <h3>SEE Result Published</h3>
+                <p>Secondary Education Examination results have been released. Students can check their scores...</p>
+                <a href="#" class="read-more">Read More →</a>
+            </div>
+            <div class="news-card card-3d">
+                <div class="news-badge">Info</div>
+                <h3>+2 Entrance Preparation</h3>
+                <p>Complete guide for +2 entrance examination preparation with practice questions...</p>
+                <a href="#" class="read-more">Read More →</a>
+            </div>
+            <div class="news-card card-3d">
+                <div class="news-badge">Alert</div>
+                <h3>New Syllabus Released</h3>
+                <p>Updated syllabus for 2024-2025 academic session is now available for download...</p>
+                <a href="#" class="read-more">Read More →</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Weather Section -->
+    <section id="weather" class="weather">
+        <div class="section-title">
+            <h2>Weather & Climate</h2>
+            <p>Global & Local Weather Information</p>
+        </div>
+        <div class="weather-container">
+            <div class="weather-main">
+                <div class="weather-card card-3d">
+                    <h3>Nepal Current Weather</h3>
+                    <div class="weather-info">
+                        <div class="weather-temp">
+                            <i class="fas fa-cloud-sun"></i>
+                            <span class="temp">28°C</span>
+                        </div>
+                        <div class="weather-details">
+                            <p><strong>Condition:</strong> Partly Cloudy</p>
+                            <p><strong>Humidity:</strong> 65%</p>
+                            <p><strong>Wind Speed:</strong> 12 km/h</p>
+                            <p><strong>Pressure:</strong> 1013 mb</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="weather-widget">
+                <input type="text" id="cityInput" placeholder="Enter city name" class="input-field">
+                <button class="btn btn-primary" onclick="fetchWeather()">Get Weather</button>
+                <div id="weatherResult" class="result-box"></div>
+            </div>
+        </div>
+        <div class="climate-info">
+            <h4>Global Warming Information</h4>
+            <p>🌍 Average Global Temperature Rise: +1.1°C (since pre-industrial era)</p>
+            <p>🌱 Carbon Dioxide Level: 419 ppm (parts per million)</p>
+            <p>🔥 Key Concern: Rising sea levels, extreme weather events</p>
+            <p>💚 Solutions: Renewable energy, afforestation, sustainable practices</p>
+        </div>
+    </section>
+
+    <!-- AI Website Builder Section -->
+    <section id="ai-builder" class="ai-builder">
+        <div class="section-title">
+            <h2>AI Website Builder</h2>
+            <p>Create Professional Websites with AI Assistance</p>
+        </div>
+        <div class="ai-builder-content">
+            <div class="ai-builder-card card-3d">
+                <i class="fas fa-robot"></i>
+                <h3>Website Generator</h3>
+                <p>Generate professional websites using AI technology (Powered by Claude)</p>
+                <textarea id="sitePrompt" placeholder="Describe your website idea..." class="input-field" rows="6"></textarea>
+                <button class="btn btn-primary" onclick="generateWebsite()">Generate Website</button>
+                <div id="builderResult" class="result-box"></div>
+            </div>
+            <div class="ai-features">
+                <h4>Features:</h4>
+                <ul>
+                    <li>✓ AI-powered design suggestions</li>
+                    <li>✓ Responsive layouts</li>
+                    <li>✓ Color scheme recommendations</li>
+                    <li>✓ Content optimization</li>
+                    <li>✓ SEO-friendly templates</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Feedback Section -->
+    <section id="feedback" class="feedback">
+        <div class="section-title">
+            <h2>Feedback & Support</h2>
+            <p>We'd love to hear from you</p>
+        </div>
+        <div class="feedback-container">
+            <form class="feedback-form card-3d" onsubmit="submitFeedback(event)">
+                <div class="form-group">
+                    <label>Name:</label>
+                    <input type="text" id="feedbackName" placeholder="Your Name" class="input-field" required>
+                </div>
+                <div class="form-group">
+                    <label>Email:</label>
+                    <input type="email" id="feedbackEmail" placeholder="your@email.com" class="input-field" required>
+                </div>
+                <div class="form-group">
+                    <label>Feedback Type:</label>
+                    <select id="feedbackType" class="input-field" required>
+                        <option value="">Select type...</option>
+                        <option value="bug">Bug Report</option>
+                        <option value="feature">Feature Request</option>
+                        <option value="improvement">Improvement Suggestion</option>
+                        <option value="general">General Feedback</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Message:</label>
+                    <textarea id="feedbackMsg" placeholder="Your feedback..." class="input-field" rows="6" required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Submit Feedback</button>
+            </form>
+            <div class="contact-info card-3d">
+                <h3>Contact Information</h3>
+                <p><i class="fas fa-envelope"></i> <strong>Email:</strong> <a href="mailto:zbsah26@gmail.com">zbsah26@gmail.com</a></p>
+                <p><i class="fas fa-phone"></i> <strong>WhatsApp:</strong> <a href="https://wa.me/qr/57U6A6Z6LJLQN1" target="_blank">Chat with us</a></p>
+                <div class="social-links">
+                    <a href="https://www.facebook.com/share/171DKrVZKx/" target="_blank" class="social-btn">
+                        <i class="fab fa-facebook"></i> Facebook
+                    </a>
+                    <a href="https://www.instagram.com/zb_lyrics_01?igsh=OGE2aTIxcGd5aTBn" target="_blank" class="social-btn">
+                        <i class="fab fa-instagram"></i> Instagram
+                    </a>
+                    <a href="https://wa.me/qr/57U6A6Z6LJLQN1" target="_blank" class="social-btn">
+                        <i class="fab fa-whatsapp"></i> WhatsApp
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gorkha Patra Section -->
+    <section id="gorkha-patra" class="gorkha-patra">
+        <div class="section-title">
+            <h2>Gorkha Patra E-Paper</h2>
+            <p>Read the latest news from Nepal's premier newspaper</p>
+        </div>
+        <div class="gorkha-container">
+            <a href="https://epaper.gorkhapatraonline.com/single/gorkhapatra" target="_blank" class="gorkha-link card-3d">
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 400'%3E%3Crect fill='%23D4AF37' width='300' height='400'/%3E%3Ctext x='50%' y='50%' text-anchor='middle' dy='.3em' font-size='32' font-weight='bold' fill='%23000'%3EGorkha Patra%3C/text%3E%3Ctext x='50%' y='65%' text-anchor='middle' dy='.3em' font-size='14' fill='%23000'%3EE-Paper%3C/text%3E%3C/svg%3E" alt="Gorkha Patra">
+                <p>Read Full E-Paper →</p>
+            </a>
+        </div>
+    </section>
+
+    <!-- Ads Section -->
+    <section id="ads" class="ads-section">
+        <div class="ad-banner card-3d">
+            <h3>Sponsored Content</h3>
+            <p>Premium educational resources and calculators available here</p>
+            <button class="btn btn-secondary" onclick="alert('Ad content')">Learn More</button>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>About ZB CLuS</h4>
+                <p>Comprehensive educational calculator platform for Nepal's education system</p>
+            </div>
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="#calculators">Calculators</a></li>
+                    <li><a href="#news">News</a></li>
+                    <li><a href="#weather">Weather</a></li>
+                    <li><a href="#feedback">Feedback</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Follow Us</h4>
+                <div class="social-icons">
+                    <a href="https://www.facebook.com/share/171DKrVZKx/" target="_blank"><i class="fab fa-facebook"></i></a>
+                    <a href="https://www.instagram.com/zb_lyrics_01?igsh=OGE2aTIxcGd5aTBn" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="https://wa.me/qr/57U6A6Z6LJLQN1" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 ZB CLuS. All Rights Reserved. © Jibendar Sah</p>
+            <p>Design by: <strong>Jibendar Sah</strong> | Powered by Advanced Calculations</p>
+        </div>
+    </footer>
+
+    <script src="app.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

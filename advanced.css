@@ -1,0 +1,570 @@
+/**
+ * ADVANCED CSS ENHANCEMENTS
+ * Industry-Grade Visual System
+ * Compatibility: Modern Browsers (Chrome, Firefox, Safari, Edge)
+ */
+
+/* ============================================
+   PERFORMANCE OPTIMIZATIONS
+   ============================================ */
+
+/* Enable GPU acceleration for animations */
+.btn,
+.card-3d,
+.nav-link,
+.theme-toggle,
+.floating-cube,
+.floating-sphere,
+.floating-pyramid,
+.news-card,
+.about-card,
+.weather-info,
+.social-btn,
+.input-field {
+    will-change: transform, opacity;
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    perspective: 1000px;
+}
+
+/* Reduce repaints on scroll */
+body {
+    will-change: scroll-position;
+}
+
+/* ============================================
+   ADVANCED MICRO-INTERACTIONS
+   ============================================ */
+
+/* Ripple effect on buttons */
+@keyframes ripple {
+    to {
+        transform: scale(4);
+        opacity: 0;
+    }
+}
+
+.btn::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 5px;
+    height: 5px;
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+}
+
+.btn:active::after {
+    animation: ripple 0.6s ease-out;
+}
+
+/* Hover state transitions */
+.interactive-element {
+    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    position: relative;
+}
+
+.interactive-element::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+    opacity: 0;
+    transition: opacity 0.3s;
+    pointer-events: none;
+    border-radius: inherit;
+}
+
+.interactive-element:hover::before {
+    opacity: 1;
+}
+
+/* ============================================
+   ADVANCED GRADIENT SYSTEM
+   ============================================ */
+
+/* Multi-layer gradients */
+.gradient-premium {
+    background: 
+        linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(139, 92, 246, 0.1) 50%, rgba(236, 72, 153, 0.1) 100%),
+        linear-gradient(45deg, rgba(6, 182, 212, 0.05) 0%, rgba(59, 130, 246, 0.05) 100%);
+    background-attachment: fixed;
+}
+
+body.light-theme .gradient-premium {
+    background: 
+        linear-gradient(135deg, rgba(37, 99, 235, 0.08) 0%, rgba(124, 58, 237, 0.08) 50%, rgba(219, 39, 119, 0.08) 100%),
+        linear-gradient(45deg, rgba(8, 145, 178, 0.04) 0%, rgba(37, 99, 235, 0.04) 100%);
+}
+
+/* Animated gradient background */
+@keyframes gradientShift {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+.gradient-animated {
+    background-size: 200% 200%;
+    animation: gradientShift 15s ease-in-out infinite;
+}
+
+/* ============================================
+   ADVANCED TEXT EFFECTS
+   ============================================ */
+
+/* Gradient text with animation */
+.text-gradient {
+    background: var(--gradient-text);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: textGradientShift 3s ease-in-out infinite;
+}
+
+@keyframes textGradientShift {
+    0%, 100% {
+        filter: hue-rotate(0deg);
+    }
+    50% {
+        filter: hue-rotate(10deg);
+    }
+}
+
+/* Text shadow effects */
+.text-shadow-premium {
+    text-shadow: 
+        0 2px 4px rgba(0, 0, 0, 0.1),
+        0 4px 8px rgba(0, 0, 0, 0.1),
+        0 0 20px rgba(59, 130, 246, 0.1);
+}
+
+body.light-theme .text-shadow-premium {
+    text-shadow: 
+        0 2px 4px rgba(15, 23, 42, 0.1),
+        0 4px 8px rgba(15, 23, 42, 0.1),
+        0 0 20px rgba(37, 99, 235, 0.1);
+}
+
+/* ============================================
+   ADVANCED BLUR & BACKDROP EFFECTS
+   ============================================ */
+
+/* Multi-layer blur effect */
+.blur-premium {
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+body.light-theme .blur-premium {
+    background-color: rgba(15, 23, 42, 0.03);
+}
+
+/* Frosted glass effect */
+.frosted-glass {
+    backdrop-filter: blur(10px) brightness(1.1);
+    -webkit-backdrop-filter: blur(10px) brightness(1.1);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    box-shadow: 0 8px 32px rgba(31, 38, 135, 0.37);
+}
+
+body.light-theme .frosted-glass {
+    border: 1px solid rgba(15, 23, 42, 0.1);
+    box-shadow: 0 8px 32px rgba(15, 23, 42, 0.1);
+}
+
+/* ============================================
+   ADVANCED SHADOW SYSTEM
+   ============================================ */
+
+/* Elevated shadow */
+.shadow-elevated {
+    box-shadow: 
+        0 2px 4px rgba(0, 0, 0, 0.1),
+        0 8px 16px rgba(0, 0, 0, 0.1),
+        0 20px 40px rgba(0, 0, 0, 0.15);
+    transition: box-shadow 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.shadow-elevated:hover {
+    box-shadow: 
+        0 2px 4px rgba(0, 0, 0, 0.15),
+        0 8px 16px rgba(0, 0, 0, 0.15),
+        0 30px 60px rgba(0, 0, 0, 0.2);
+}
+
+/* Colored shadow */
+.shadow-colored {
+    box-shadow: 0 0 30px rgba(59, 130, 246, 0.3);
+}
+
+body.light-theme .shadow-colored {
+    box-shadow: 0 0 30px rgba(37, 99, 235, 0.2);
+}
+
+/* ============================================
+   ADVANCED BORDER EFFECTS
+   ============================================ */
+
+/* Gradient border */
+.border-gradient {
+    position: relative;
+    background: var(--surface-card);
+    border: 2px solid transparent;
+    background-clip: padding-box;
+}
+
+.border-gradient::before {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    background: var(--gradient-primary);
+    z-index: -1;
+    border-radius: inherit;
+}
+
+/* Animated border */
+@keyframes borderAnimation {
+    0% {
+        border-color: var(--accent-blue);
+    }
+    50% {
+        border-color: var(--accent-purple);
+    }
+    100% {
+        border-color: var(--accent-blue);
+    }
+}
+
+.border-animated {
+    border: 2px solid;
+    animation: borderAnimation 3s ease-in-out infinite;
+}
+
+/* ============================================
+   ADVANCED LAYOUT PATTERNS
+   ============================================ */
+
+/* CSS Grid with auto-fill */
+.grid-responsive {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    grid-auto-flow: dense;
+}
+
+/* Masonry-like layout */
+.masonry-grid {
+    column-count: auto;
+    column-width: 300px;
+    column-gap: 2rem;
+}
+
+.masonry-grid > * {
+    break-inside: avoid;
+    margin-bottom: 2rem;
+}
+
+/* ============================================
+   ADVANCED INTERACTION STATES
+   ============================================ */
+
+/* Focus-visible for accessibility */
+:focus-visible {
+    outline: 2px solid var(--accent-blue);
+    outline-offset: 2px;
+    border-radius: 4px;
+}
+
+/* Focus-within for form containers */
+.form-container:focus-within {
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+/* Active states */
+.element:active {
+    transform: scale(0.98);
+}
+
+/* Disabled states */
+:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+/* ============================================
+   ADVANCED COLOR SYSTEM
+   ============================================ */
+
+/* Color modes */
+.color-brand {
+    color: var(--accent-blue);
+}
+
+.color-success {
+    color: var(--accent-cyan);
+}
+
+.color-error {
+    color: var(--accent-pink);
+}
+
+.color-warning {
+    color: var(--accent-purple);
+}
+
+/* Background colors */
+.bg-brand {
+    background: rgba(59, 130, 246, 0.1);
+}
+
+.bg-success {
+    background: rgba(6, 182, 212, 0.1);
+}
+
+.bg-error {
+    background: rgba(236, 72, 153, 0.1);
+}
+
+/* ============================================
+   ADVANCED TYPOGRAPHY
+   ============================================ */
+
+/* Font smoothing */
+body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-feature-settings: "kern" 1;
+}
+
+/* Custom font weights */
+.font-thin {
+    font-weight: 100;
+}
+
+.font-light {
+    font-weight: 300;
+}
+
+.font-regular {
+    font-weight: 400;
+}
+
+.font-medium {
+    font-weight: 500;
+}
+
+.font-semibold {
+    font-weight: 600;
+}
+
+.font-bold {
+    font-weight: 700;
+}
+
+.font-extrabold {
+    font-weight: 800;
+}
+
+/* Text utilities */
+.text-truncate {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.text-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+/* ============================================
+   ADVANCED RESPONSIVE UTILITIES
+   ============================================ */
+
+/* Responsive display */
+@media (max-width: 768px) {
+    .hide-tablet {
+        display: none !important;
+    }
+    
+    .show-tablet {
+        display: block !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .hide-mobile {
+        display: none !important;
+    }
+    
+    .show-mobile {
+        display: block !important;
+    }
+}
+
+/* Responsive grid adjustments */
+@media (max-width: 768px) {
+    .grid-responsive {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    }
+    
+    .masonry-grid {
+        column-count: 2;
+        column-width: auto;
+    }
+}
+
+@media (max-width: 480px) {
+    .grid-responsive {
+        grid-template-columns: 1fr;
+    }
+    
+    .masonry-grid {
+        column-count: 1;
+    }
+}
+
+/* ============================================
+   ADVANCED UTILITIES
+   ============================================ */
+
+/* Spacing utilities */
+.m-0 { margin: 0; }
+.m-1 { margin: 0.5rem; }
+.m-2 { margin: 1rem; }
+.m-3 { margin: 1.5rem; }
+.m-4 { margin: 2rem; }
+
+.p-0 { padding: 0; }
+.p-1 { padding: 0.5rem; }
+.p-2 { padding: 1rem; }
+.p-3 { padding: 1.5rem; }
+.p-4 { padding: 2rem; }
+
+/* Display utilities */
+.flex { display: flex; }
+.flex-col { flex-direction: column; }
+.flex-center { justify-content: center; align-items: center; }
+.flex-between { justify-content: space-between; align-items: center; }
+
+.grid { display: grid; }
+.block { display: block; }
+.inline-block { display: inline-block; }
+.inline { display: inline; }
+
+/* Visibility utilities */
+.visible { visibility: visible; }
+.hidden { visibility: hidden; }
+.transparent { opacity: 0; }
+.opaque { opacity: 1; }
+
+/* ============================================
+   ACCESSIBILITY ENHANCEMENTS
+   ============================================ */
+
+/* Skip links */
+.skip-link {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    background: var(--accent-blue);
+    color: white;
+    padding: 8px;
+    z-index: 100;
+}
+
+.skip-link:focus {
+    top: 0;
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: more) {
+    * {
+        border-width: 2px;
+    }
+    
+    .btn {
+        font-weight: 700;
+    }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* ============================================
+   PRINT STYLES
+   ============================================ */
+
+@media print {
+    body {
+        background: white;
+        color: black;
+    }
+    
+    .navbar,
+    .footer,
+    .social-links {
+        display: none;
+    }
+    
+    .card-3d {
+        page-break-inside: avoid;
+        box-shadow: none;
+        border: 1px solid #ccc;
+    }
+}
+
+/* ============================================
+   DARK MODE SYSTEM
+   ============================================ */
+
+/* Color inversion for dark mode */
+@media (prefers-color-scheme: dark) {
+    /* Already dark by default */
+}
+
+@media (prefers-color-scheme: light) {
+    body.light-theme {
+        color-scheme: light;
+    }
+}
+
+/* ============================================
+   PERFORMANCE MONITORING
+   ============================================ */
+
+/* Measure paint timing */
+.measure-paint {
+    /* This class can be used to measure paint timing */
+    contain: layout style paint;
+}
+
+/* Optimize rendering */
+.optimize-rendering {
+    contain: content;
+    content-visibility: auto;
+}
+
+/* End of Advanced CSS Enhancements */
