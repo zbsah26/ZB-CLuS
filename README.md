@@ -422,4 +422,3 @@ Having trouble? Contact us:
 
 ---
 
-**Happy Calculating! 🎓📐📊**
